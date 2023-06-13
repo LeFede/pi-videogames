@@ -1,17 +1,25 @@
+import { Videogame } from "@components"
 import styles from "./Home.module.css"
 
+import { useEffect, useState } from "react"
+
 export const Home = () => {
+  const [games, setGames] = useState([])
+  useEffect(() => {
+    const fetchGames = async () => {
+      const res = await fetch("http://localhost:3001/videogames")
+      const data = await res.json()
+      setGames(data)
+    }
+    fetchGames()
+  }, [])
+
   return (
     <main className={styles.main}>
       <section>
-        <article>1</article>
-        <article>2</article>
-        <article>3</article>
-        <article>4</article>
-        <article>5</article>
-        <article>6</article>
-        <article>7</article>
-        <article>8</article>
+        {
+          games.map(game => <Videogame key={game.id} {...game} />)
+        }
       </section>
     </main>
   )

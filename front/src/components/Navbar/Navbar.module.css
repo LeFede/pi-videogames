@@ -3,6 +3,7 @@
   bottom: 0;
   position: fixed;
   filter: drop-shadow(var(--shadow));
+  z-index: 1;
 }
 
 .nav ul {
@@ -57,22 +58,36 @@
   content: "🎮"
 }
 
-
 .mode {
-  margin-left: auto;
-  margin-top: auto;
+  bottom: 0;
+  font-size: var(--nav-size);
+  padding: var(--nav-padding);
+  position: fixed;
+  right: 0;
+  z-index: 2;
 }
 
-.mode input[value="hide"]:checked ~ label::before {
-  content: "🌞";
+.mode label {
+  transition: filter var(--transition-time) ease;
+  filter: grayscale(1);
+}
+
+.mode label:hover {
+  filter: grayscale(0);
+}
+
+.mode input {
+  display: none;
+}
+
+.mode input[value="mode"]:checked ~ label::before {
+  content: "🌛";
 }
 
 .mode > label::before {
-  content: "🌛";
+  content: "🌞";
   cursor: pointer;
 }
-
-
 
 @media screen and (min-width: 768px) {
 
@@ -95,6 +110,11 @@
 
   .nav ul li > label ~ form:hover {
     translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
+  }
+
+  .mode {
+    left: 0;
+    bottom: 0;
   }
 
 }

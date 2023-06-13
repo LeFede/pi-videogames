@@ -1,5 +1,9 @@
+:root {
+  font-family: "Ubuntu";
+}
+
 body {
-  background-color: var(--black-3);
+  background: var(--gradient-3);
   color: var(--white-1);
 }
 
@@ -21,3 +25,11 @@ footer {
 nav {
   position: fixed;
 }
+
+
+body:has(div > input[value="mode"]:checked) {
+  /* background: var(--grey-1); */
+  background: var(--gradient-4);
+}
+
+

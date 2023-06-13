@@ -12,7 +12,8 @@
     "#utils": "./app/utils/index.js",
     "#models": "./app/models/index.js",
     "#controllers": "./app/controllers/index.js",
-    "#routes": "./app/routes/index.js"
+    "#routes": "./app/routes/index.js",
+    "#adapters": "./app/adapters/index.js"
   },
   "keywords": [],
   "author": "",

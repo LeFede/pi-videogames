@@ -5,19 +5,26 @@
 
   --white-1: #F3F3F3;
 
+  --grey-1: #808080;
+
   --gradient-1: linear-gradient(0deg,#4354b9,#649bff);
   --gradient-2: linear-gradient(180deg,#fd867d,#b1305c); 
+
+  --gradient-3: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+  --gradient-4: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
 
   --nav-size: 3rem;
   --nav-padding: 1rem;
 
-  --article-height: 300px;
+  --article-height: 100px;
   --article-gap: 1rem;
-  --article-size: 20rem;
+  --article-size: 18rem;
 
   --main-padding-left: 4rem;
 
   --slide-width: 30rem;
   --shadow: 1px 1px 3px black;
   --hover-scale: 1.2;
+
+  --transition-time: .4s;
 }

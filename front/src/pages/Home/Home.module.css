@@ -1,5 +1,6 @@
 .main {
   padding: var(--nav-size);
+  padding-bottom: calc(var(--nav-size) * 2);
 }
 
 .main section {
@@ -8,13 +9,9 @@
   grid-template-columns: repeat(auto-fill, minmax(Min(100%, var(--article-size)), 1fr));
 }
 
-.main section article {
-  border: 1px solid white;
-  min-height: var(--article-height);
-}
-
 @media screen and (min-width: 768px) {
   .main {
+    padding: var(--nav-size);
     padding-left: calc(var(--nav-size) + var(--nav-padding) * 2 + var(--main-padding-left));
     padding-right: 30px;
     max-width: 1280px;
