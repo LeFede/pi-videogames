@@ -1,0 +1,23 @@
+body {
+  background-color: var(--black-3);
+  color: var(--white-1);
+}
+
+main {
+  min-height: 100dvh;
+  background-position: center;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+footer {
+  
+}
+
+nav {
+  position: fixed;
+}

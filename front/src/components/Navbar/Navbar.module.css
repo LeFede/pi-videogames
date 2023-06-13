@@ -1,0 +1,100 @@
+.nav {
+  background-color: var(--black-1);
+  bottom: 0;
+  position: fixed;
+  filter: drop-shadow(var(--shadow));
+}
+
+.nav ul {
+  display: flex;
+  width: 100dvw;
+  background-color: var(--black-1);
+  box-shadow: var(--shadow);
+}
+
+.nav ul li > input {
+  display: none;
+}
+
+.nav ul li form {
+  background: var(--black-1);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  left: calc(-1 * var(--slide-width)); /* -30rem */
+  padding: var(--nav-size);
+  position: absolute;
+  top: 0;
+  transition: all .4s ease;
+  width: var(--slide-width);
+  z-index: -1;
+}
+
+.nav ul li > label {
+  font-size: var(--nav-size);
+  display: block;
+}
+
+.nav ul li > label::before {
+  padding: var(--nav-padding);
+  position: relative;
+  display: block;
+}
+
+.nav ul li > label {
+  filter: grayscale(1);
+  cursor: pointer;
+  transition: filter, scale .4s ease;
+}
+
+
+
+.search > label::before {
+  content: "🔍"
+}
+
+.add > label::before {
+  content: "🎮"
+}
+
+
+.mode {
+  margin-left: auto;
+  margin-top: auto;
+}
+
+.mode input[value="hide"]:checked ~ label::before {
+  content: "🌞";
+}
+
+.mode > label::before {
+  content: "🌛";
+  cursor: pointer;
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+  .nav ul {
+    flex-direction: column;
+    width: initial;
+    height: 100dvh;
+  }
+
+  .nav ul li > label:hover {
+    filter: grayscale(0);
+    scale: var(--hover-scale);
+  }
+
+   
+  .nav ul li > label:hover ~ form {
+    translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
+  }
+
+
+  .nav ul li > label ~ form:hover {
+    translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
+  }
+
+}

@@ -1,0 +1,31 @@
+.main {
+  align-items: flex-end;
+  font-family: "DarkSouls";
+  overflow: hidden;
+  position: relative;
+}
+
+.press_any_key {
+  bottom: 5%;
+  cursor: pointer;
+  filter: drop-shadow(0 0 .3rem var(--black-2));
+  font-size: 5rem;
+  font-size: clamp(2rem, 5vw, 4rem);
+  left: 50%;
+  position: fixed;
+  transition: filter .4s ease;
+  translate: -50% 0;
+  white-space: nowrap;
+}
+
+.press_any_key:hover {
+  filter: drop-shadow(0 0 .3rem var(--white-1));
+}
+
+.video {
+  width: 100vw;
+  object-fit: cover;
+  height: 100vh;
+  position: fixed;
+}
+

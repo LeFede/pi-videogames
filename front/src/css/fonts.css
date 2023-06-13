@@ -1,0 +1,6 @@
+@font-face {
+ font-family: "DarkSouls";
+ src: local("DarkSouls"),
+  url("@assets/fonts/DarkSouls.ttf") format("truetype");
+ /* font-weight: bold; */
+}

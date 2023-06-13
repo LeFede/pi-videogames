@@ -1,0 +1,23 @@
+:root {
+  --black-1: #252525;
+  --black-2: #151515;
+  --black-3: #202020;
+
+  --white-1: #F3F3F3;
+
+  --gradient-1: linear-gradient(0deg,#4354b9,#649bff);
+  --gradient-2: linear-gradient(180deg,#fd867d,#b1305c); 
+
+  --nav-size: 3rem;
+  --nav-padding: 1rem;
+
+  --article-height: 300px;
+  --article-gap: 1rem;
+  --article-size: 20rem;
+
+  --main-padding-left: 4rem;
+
+  --slide-width: 30rem;
+  --shadow: 1px 1px 3px black;
+  --hover-scale: 1.2;
+}
