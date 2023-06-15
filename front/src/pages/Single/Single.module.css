@@ -1,0 +1,94 @@
+.single {
+  /* display: grid; */
+  /* place-items: center; */
+  padding: var(--nav-size);
+  padding-bottom: calc(var(--nav-size) * 2);
+  text-shadow: 0 0 5px black;
+}
+
+.single a {
+  font-size: 4rem;
+  color: var(--blue-1);
+  transition: all .25s ease;
+}
+
+.single a:hover {
+  color: var(--red-1);
+}
+
+.released {
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+}
+
+.bg {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  filter: brightness(25%);
+  object-position: top;
+}
+
+.fieldset {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.data {
+  opacity: 0;
+  animation: fadein forwards;
+  animation-duration: 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* .fieldset input { */
+/*   display: none; */
+/* } */
+
+.fieldset p {
+  /* opacity: .5; */
+  background: var(--gradient-1);
+  padding: .2rem 1rem;
+  border-radius: .5rem;
+  /* cursor: pointer; */
+  /* flex: auto; */
+  text-align: center;
+  /* user-select: none; */
+}
+
+.data h3 {
+  margin-bottom: .5rem;
+}
+
+
+@media screen and (min-width: 768px) {
+  .single {
+    padding: var(--nav-size);
+    padding-left: calc(var(--nav-size) + var(--nav-padding) * 2 + var(--main-padding-left));
+    padding-right: 30px;
+    max-width: 1280px;
+    margin: auto;
+  }
+}

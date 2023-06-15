@@ -1,8 +1,18 @@
-export const adaptVideogame = (game) => {
+export const adaptVideogame = (game, crop = true) => {
+
+  const divideUrl = "https://media.rawg.io/media/"
+  const fullUrl = game.background_image
+  const divideIndex= fullUrl.lastIndexOf(divideUrl)
+
+  const start = fullUrl.slice(0, divideIndex+ divideUrl.length)
+  const end = fullUrl.slice(divideIndex+ divideUrl.length)
+
+  const final = start + ( crop ? "crop/600/400/" : "") + end
+
   return {
     genres    : game.genres,
     id        : game.id,
-    image     : `https://api.rawg.io/media/crop/600/400${game.background_image.split("io/media")[1]}`,
+    image     : final,
     name      : game.name,
     platforms : game.platforms,
     rating    : game.rating,

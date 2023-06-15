@@ -1,35 +1,33 @@
 import styles from "./Navbar.module.css"
-import add from "@assets/icons/add.svg"
-import search from "@assets/icons/search.svg"
-import sun from "@assets/icons/sun.svg"
-import moon from "@assets/icons/moon.svg"
+
+import { AddGameForm } from "@components/AddGameForm"
+
+window.addEventListener('keyup', () => {console.log(document.activeElement)})
 
 export const Navbar = () => {
+
   return (
     <>
       <nav className={styles.nav}>
         <ul>
           <li className={styles.search}>
-            <label></label>
+            <label tabIndex={"0"}></label>
             <form>
+              <h3>Search videogame</h3>
+
               <label htmlFor="search-name">Search</label>
               <input type="text" name="search" id="search-name" readOnly/>
             </form>
           </li>
           <li className={styles.add}>
-            <label></label>
-            <form>
-              <label htmlFor="name">Add</label>
-              <input type="text" id="name" name="name" value="name" readOnly/>
-            </form>
-          </li>
-          <li className={styles.mode}>
+            <label tabIndex={"0"}></label>
+            <AddGameForm />
           </li>
         </ul>
       </nav>
       <div className={styles.mode}>
         <input type="checkbox" value="mode" id="mode" readOnly/>
-        <label htmlFor="mode"></label>
+        <label tabIndex={"0"} htmlFor="mode"></label>
         <div className={styles.bg}></div>
       </div>
 

@@ -1,0 +1,13 @@
+.container img {
+  right: 0;
+  position: absolute;
+  bottom: 0;
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -13,8 +13,22 @@
   box-shadow: var(--shadow);
 }
 
-.nav ul li > input {
-  display: none;
+.nav ul li form > input, textarea {
+  width: 100%;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border: 1px solid rgba(255,255,255, .14);
+  border-radius: 6px;
+  background: rgba(255,255,255, .04);
+  color: var(--white-1);
+  padding: .3rem;
+}
+
+.nav ul li form > input:active, input:focus, textarea:active, textarea:focus {
+  outline: 1px solid var(--grey-1);
 }
 
 .nav ul li form {
@@ -29,6 +43,51 @@
   transition: all .4s ease;
   width: var(--slide-width);
   z-index: -1;
+  align-items: flex-start;
+}
+
+.nav ul li form > label {
+  margin-bottom: .5rem;
+}
+
+.nav ul li form fieldset {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+
+.nav ul li form fieldset input {
+  display: none;
+}
+
+.nav ul li form fieldset label {
+  opacity: .5;
+  background: var(--gradient-1);
+  padding: .2rem 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  flex: auto;
+  text-align: center;
+  user-select: none;
+}
+
+.nav ul li form fieldset legend {
+  margin-bottom: .5rem;
+}
+
+.nav ul li form fieldset input:checked + label {
+  background: var(--gradient-2);
+  opacity: 1;
+}
+
+.nav ul li form h3, textarea, input {
+  margin-bottom: 2rem;
+}
+
+.nav ul li form textarea {
+  resize: none;
 }
 
 .nav ul li > label {
@@ -48,8 +107,6 @@
   transition: filter, scale .4s ease;
 }
 
-
-
 .search > label::before {
   content: "🔍"
 }
@@ -64,6 +121,7 @@
   padding: var(--nav-padding);
   position: fixed;
   right: 0;
+  width: calc(var(--nav-size) + var(--nav-padding) * 2);
   z-index: 2;
 }
 
@@ -107,8 +165,15 @@
     translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
   }
 
+  .nav ul li > label:focus ~ form {
+    translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
+  }
 
   .nav ul li > label ~ form:hover {
+    translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
+  }
+
+  .nav ul li > label ~ form:has(*:focus) {
     translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
   }
 

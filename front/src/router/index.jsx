@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { Home, Welcome, NotFound } from "@pages";
+import { Home, Welcome, NotFound, Single } from "@pages";
 import { HomeLayout } from "@layouts";
 
 export const router = createBrowserRouter([
@@ -16,6 +16,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "single/:id",
+        element: <Single />
       },
     ]
   },

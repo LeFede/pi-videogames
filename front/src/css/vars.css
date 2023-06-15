@@ -7,6 +7,9 @@
 
   --grey-1: #808080;
 
+  --blue-1: #4354b9;
+  --red-1: #b1305c;
+
   --gradient-1: linear-gradient(0deg,#4354b9,#649bff);
   --gradient-2: linear-gradient(180deg,#fd867d,#b1305c); 
 
@@ -27,4 +30,13 @@
   --hover-scale: 1.2;
 
   --transition-time: .4s;
+
+
+  /* 
+*  --black-a: #303030; --white-a: #cfcfcf;
+*  --black-b: #2b2b2b; --white-b: #d4d4d4;
+*  --black-c: #1f1f1f; --white-c: #e0e0e0;
+*  --black-d: #1b1c1e; --white-d: #e4e3e1;
+* */
+
 }

@@ -5,6 +5,7 @@
 body {
   background: var(--gradient-3);
   color: var(--white-1);
+  position: relative;
 }
 
 main {
@@ -27,9 +28,30 @@ nav {
 }
 
 
-body:has(div > input[value="mode"]:checked) {
-  /* background: var(--grey-1); */
+body::before {
+  position: absolute;
+  content: "";
+  inset: 0;
   background: var(--gradient-4);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity .25s linear;
+  pointer-events: none;
 }
 
+body:has(div > input[value="mode"]:checked)::before {
+  opacity: 1;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
 
