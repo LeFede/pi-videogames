@@ -8,6 +8,7 @@ import {
 
 const router = Router()
 
+
 router.get("/", allVideogames)
 router.get("/name", searchVideogames)
 router.get("/:id", singleVideogame)

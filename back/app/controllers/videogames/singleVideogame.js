@@ -4,7 +4,7 @@ import { adaptVideogame } from "#adapters"
 export const singleVideogame = async (req, res) => {
   const { id } = req.params
   try {
-    let game = await fetch(env.API_URL + env.API_GAME_PATH + id + '?key=' + env.API_KEY)
+    let game = await fetch(env.API_URL + env.API_GAME_PATH + "/" + id + '?key=' + env.API_KEY)
     game = await game.json()
     
     if (game.detail) throw new Error(game.detail)

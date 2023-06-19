@@ -1,5 +1,7 @@
 export const adaptVideogame = (game, crop = true) => {
 
+  console.log(game.background_image)
+  // const final = game.background_image
   const divideUrl = "https://media.rawg.io/media/"
   const fullUrl = game.background_image
   const divideIndex= fullUrl.lastIndexOf(divideUrl)

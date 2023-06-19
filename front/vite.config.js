@@ -16,7 +16,8 @@ export default defineConfig({
       "@redux"      : resolve(__dirname, "./src/redux/"),
       "@root"       : resolve(__dirname, "."),
       "@router"     : resolve(__dirname, "./src/router/"),
-      "@assets"     : resolve(__dirname, "./src/assets/")
+      "@assets"     : resolve(__dirname, "./src/assets/"),
+      "@utils"      : resolve(__dirname, "./src/utils/"),
     },
   },
   plugins: [react()],

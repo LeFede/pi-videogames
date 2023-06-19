@@ -9,6 +9,82 @@
   grid-template-columns: repeat(auto-fill, minmax(Min(100%, var(--article-size)), 1fr));
 }
 
+
+/* .pagination { */
+/*   position: fixed; */
+/*   bottom: 0; */
+/*   display: flex; */
+/*   left: 50%; */
+/*   padding: 5rem 0; */
+/* } */
+
+.pagination {
+  /* text-align: center; */
+  /* margin: 1rem; */
+  /* gap: 1rem; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* position: fixed; */
+  /* z-index: 1; */
+  /* left: 50%; */
+  /* bottom: 0; */
+  /* transform: translateX(-50%); */
+  /* filter: drop-shadow(0 0 10px black); */
+
+  text-align: center;
+  /* margin: 1rem; */
+  /* gap: 1rem; */
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  /* left: 50%; */
+  bottom: 0;
+  /* transform: translateX(-50%); */
+  filter: drop-shadow(0 0 10px black);
+  width: 100%;
+  left: 0;
+  width: 100vw;
+  justify-content: space-between;
+  z-index: 30;
+  padding: var(--nav-size);
+  padding-bottom: 7rem;
+}
+.button {
+  background: black;
+  border: 1px solid white;
+  border-radius: 0.4rem;
+  color: white;
+  font-weight: 900;
+  cursor: pointer; padding: .5rem 1rem;
+  transition: .4s all ease;
+  font-size: 1.5rem;
+}
+
+
+.selected {
+  background: var(--gradient-2); 
+}
+
+.hide {
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+
+}
+
+.numbers {
+  display: flex;
+  width: 15rem;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.button:hover {
+  /* background: linear-gradient(180deg,#fd867d,#b1305c); */
+  background: var(--gradient-1);
+}
+
 @media screen and (min-width: 768px) {
   .main {
     padding: var(--nav-size);
@@ -17,4 +93,30 @@
     max-width: 1280px;
     margin: auto;
   }
+
+  .numbers {
+    width: 20rem;
+  }
+
+  .button {
+    font-size: 2rem;
+  }
+
+  .pagination {
+    text-align: center;
+    margin: 1rem;
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0 10px black);
+    padding: var(--nav-size);
+    /* justify-content: space-between; */
+    max-width: 50rem;
+  }
 }
+

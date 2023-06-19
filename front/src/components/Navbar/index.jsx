@@ -2,8 +2,6 @@ import styles from "./Navbar.module.css"
 
 import { AddGameForm } from "@components/AddGameForm"
 
-window.addEventListener('keyup', () => {console.log(document.activeElement)})
-
 export const Navbar = () => {
 
   return (
