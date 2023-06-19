@@ -166,7 +166,7 @@
   }
 
   .nav ul li > label:focus ~ form {
-    translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0;
+    /* translate: calc(var(--slide-width) + (var(--nav-padding) * 2) + var(--nav-size)) 0; */
   }
 
   .nav ul li > label ~ form:hover {

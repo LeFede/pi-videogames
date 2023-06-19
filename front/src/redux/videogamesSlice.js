@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   videogames: [],
   genres: [],
+  search: "",
 }
 
 export const fetchVideogames = createAsyncThunk("videogames/fetch", async (thunkAPI) => {
@@ -27,12 +28,16 @@ export const videogamesSlice = createSlice({
       state.videogames = videogames
     },
     addSingleVideogame: (state, action) => {
-      // const { payload: newVideogame } = action
-      // state.videogames.push(newVideogame)
+      const { payload: newVideogame } = action
+      state.videogames.push(newVideogame)
     },
     addGenres: (state, action) => {
       // const { payload: genres } = action
       // state.genres.push(genres)
+    },
+    setSearch: (state, action) => {
+      const { payload: search } = action
+      state.search = search
     }
   }, 
   extraReducers: (builder) => {
@@ -48,5 +53,5 @@ export const videogamesSlice = createSlice({
   },
 })
 
-export const { addVideogames, addSingleVideogame, addGenres } = videogamesSlice.actions
+export const { addVideogames, addSingleVideogame, addGenres, setSearch } = videogamesSlice.actions
 export default videogamesSlice.reducer
