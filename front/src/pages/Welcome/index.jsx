@@ -10,7 +10,7 @@ export const Welcome = () => {
       <video className={styles.video} autoPlay muted loop id="myVideo">
         <source src={video} type="video/mp4"/>
       </video>
-      <NavLink className={styles.press_any_key} to="/home">Click to continue</NavLink>
+      <NavLink className={styles.press_any_key} to="/videogames">Click to continue</NavLink>
     </main>
   )
 }

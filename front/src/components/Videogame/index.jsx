@@ -11,7 +11,7 @@ export const Videogame = (data) => {
   const greyStar = (i) => <span key={i} className={styles.gray}>⭐</span> 
 
   const handleNavigate = () => {
-    navigate(`/home/single/${id}`)
+    navigate(`/videogames/${id}`)
   }
 
   return (

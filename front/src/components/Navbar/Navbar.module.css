@@ -147,6 +147,11 @@
   cursor: pointer;
 }
 
+.sorting li::before {
+  content: "🗂";
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
 
   .nav ul {

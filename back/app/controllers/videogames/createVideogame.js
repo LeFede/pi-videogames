@@ -1,6 +1,6 @@
 export const createVideogame = async (req, res) => {
   try {
-    res.send("createVideogame")
+    console.log(req.body)
   } catch (error) {
   }
 }

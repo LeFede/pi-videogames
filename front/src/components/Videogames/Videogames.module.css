@@ -1,0 +1,6 @@
+.Videogames {
+  display: grid;
+  gap: var(--article-gap);
+  grid-template-columns: repeat(auto-fill, minmax(Min(100%, var(--article-size)), 1fr));
+}
+

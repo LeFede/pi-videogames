@@ -1,0 +1,13 @@
+.main {
+  padding: var(--nav-size);
+  padding-bottom: calc(var(--nav-size) * 2);
+}
+@media screen and (min-width: 768px) {
+  .main {
+    padding: var(--nav-size);
+    padding-left: calc(var(--nav-size) + var(--nav-padding) * 2 + var(--main-padding-left));
+    padding-right: 30px;
+    max-width: 1280px;
+    margin: auto;
+  }
+}

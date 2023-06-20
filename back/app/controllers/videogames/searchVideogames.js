@@ -6,8 +6,7 @@ export const searchVideogames = async (req, res) => {
   try {
     let games = await fetch(env.API_URL + env.API_GAME_PATH + "?search=" + name + "&page_size=15" + "&key=" + env.API_KEY)
     games = await games.json()
-
-    res.send(games.results.map(adaptVideogame))
+    res.json(games.results.map(adaptVideogame))
     
   } catch (error) {
     res.status(404).json({ error: error.message })

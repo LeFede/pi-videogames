@@ -10,6 +10,7 @@
   font-size: 4rem;
   color: var(--blue-1);
   transition: all .25s ease;
+  cursor: pointer;
 }
 
 .single a:hover {

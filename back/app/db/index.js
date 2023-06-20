@@ -13,6 +13,11 @@ export const sequelize = new Sequelize(
 Genre(sequelize)
 Videogame(sequelize)
 
+const { genre: seqGenre, videogame: seqVideogame } = sequelize.models
+
+seqVideogame.belongsToMany(seqGenre, { through: "videogame_genre", timestamps: false })
+seqGenre.belongsToMany(seqVideogame, { through: "videogame_genre", timestamps: false })
+
 export default sequelize
 export const models = {
   ...sequelize.models

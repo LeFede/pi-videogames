@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { Home, Welcome, NotFound, Single } from "@pages";
+import { Home, Welcome, NotFound, Single, Search } from "@pages";
 import { HomeLayout } from "@layouts";
 
 export const router = createBrowserRouter([
@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/home",
+    path: "/videogames",
     element: <HomeLayout />,
     children: [
       {
@@ -18,9 +18,13 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "single/:id",
+        path: ":id",
         element: <Single />
       },
+      {
+        path: "name",
+        element: <Search />
+      }
     ]
   },
 ])

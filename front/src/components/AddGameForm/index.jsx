@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { addSingleVideogame } from "@redux"
 
+const { VITE_API_ENDPOINT: endpoint } = import.meta.env
 const defaultForm = {
   name: "",
   plaftorms: [],
@@ -16,25 +17,25 @@ export const AddGameForm = () => {
 
 
   const addVideogame = async () => {
-    const res = await fetch(`${endpoint}/videogames`, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        image       : form.image,
-        name        : form.name,
-        genres      : form.genres,
-        rating      : form.rating,
-        released    : form.released,
+    try {
+      const res = await fetch(`http://localhost:3001/videogames`, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nombre: "cualquier cosa",
+        })
       })
-    })
 
-    const newVideogame = await res.json()
+      // const newVideogame = await res.json()
 
-    console.log(newVideogame)
-    // dispatch(addSingleVideogame(newVideogame.message))
+      // console.log(newVideogame)
+      // dispatch(addSingleVideogame(newVideogame.message))
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const handleChange = (event) => {
@@ -49,8 +50,13 @@ export const AddGameForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(form)
-    setForm(defaultForm)
+    // setForm(defaultForm)
+    addVideogame()
+  }
+  
+  const handlePlatforms = (event) => {
+    console.log(event.target)
+
   }
 
   return (
@@ -71,20 +77,45 @@ export const AddGameForm = () => {
 
       <fieldset>
         <legend>Platforms</legend>
-
-        <input type="checkbox" id="pc" name="platforms" value="Pc"/>
+        
+        <input 
+          onChange={handlePlatforms} 
+          type="checkbox" 
+          id="pc" 
+          name="platforms" 
+          value="Pc"/>
         <label htmlFor="pc">Pc</label>
 
-        <input type="checkbox" id="ps4" name="platforms" value="Ps4"/>
+        <input 
+          onChange={handlePlatforms} 
+          type="checkbox" 
+          id="ps4" 
+          name="platforms" 
+          value="Ps4"/>
         <label htmlFor="ps4">Playstation 4</label>
 
-        <input type="checkbox" id="xbox" name="platforms" value="Xbox"/>
+        <input 
+          onChange={handlePlatforms} 
+          type="checkbox" 
+          id="xbox" 
+          name="platforms" 
+          value="Xbox"/>
         <label htmlFor="xbox">Xbox</label>
 
-        <input type="checkbox" id="psx" name="platforms" value="PSX"/>
+        <input 
+          onChange={handlePlatforms} 
+          type="checkbox" 
+          id="psx" 
+          name="platforms" 
+          value="PSX"/>
         <label htmlFor="psx">PSX</label>
 
-        <input type="checkbox" id="wiiu" name="platforms" value=""/>
+        <input 
+          onChange={handlePlatforms} 
+          type="checkbox" 
+          id="wiiu" 
+          name="platforms" 
+          value=""/>
         <label htmlFor="wiiu">Wii-U</label>
       </fieldset>
 

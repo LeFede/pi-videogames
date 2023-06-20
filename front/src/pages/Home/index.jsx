@@ -1,9 +1,9 @@
-import { Videogame } from "@components"
+import { Videogame, Videogames } from "@components"
 import styles from "./Home.module.css"
 
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { clamp } from "../../utils"
+import { clamp } from "@utils"
 
 const gamesPerPage = 15
 
@@ -15,25 +15,14 @@ export const Home = () => {
 
   const { videogames: games, search } = useSelector(state => state) 
 
-  const filterByRegexp = game => {
-    if (search === "") return game
-    const pattern = new RegExp("\\b" + search + "\\b", "gi")
-    return game.name.match(pattern)
-  }
-
   useEffect(() => {
-    setTotalPages(Math.ceil(games.filter(filterByRegexp).length / gamesPerPage))
+    setTotalPages(Math.ceil(games.length / gamesPerPage))
   }, [games, search])
 
   return (
     <main className={styles.main}>
       <section>
-        {
-          games
-            .filter(filterByRegexp)
-            .map(game => <Videogame key={game.id} {...game} />)
-            .slice( currentPage * gamesPerPage , (currentPage + 1) * gamesPerPage)
-        }
+        <Videogames games={games} gamesPerPage={gamesPerPage} currentPage={currentPage}  />
       </section>
       <div className={styles.pagination}>
         <button className={styles.button} onClick={() => setCurrentPage(prev => clamp(--prev, 0, totalPages))}>&lt;</button>
@@ -49,4 +38,10 @@ export const Home = () => {
     </main>
   )
 }
+
+        // {
+        //   games
+        //     .map(game => <Videogame key={game.id} {...game} />)
+        //     .slice( currentPage * gamesPerPage , (currentPage + 1) * gamesPerPage)
+        // }
 

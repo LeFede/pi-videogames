@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import styles from "./Navbar.module.css"
-import { setSearch } from "@redux"
+import { useNavigate } from "react-router-dom"
+// import { searchVideogames } from "@redux"
 
 import { AddGameForm } from "@components/AddGameForm"
 import { useState } from "react"
@@ -9,6 +10,7 @@ const defaultSearch = ""
 
 export const Navbar = () => {
 
+  const navigate = useNavigate()
   const { search } = useSelector(state => state)
   const dispatch = useDispatch()
 
@@ -16,7 +18,9 @@ export const Navbar = () => {
 
   const handleSearch = (event) => {
     event.preventDefault()
-    dispatch(setSearch(searchText))
+    // dispatch(setSearch(searchText))
+    // dispatch(searchVideogames(searchText))
+    navigate(`/videogames/name?name=${searchText}`)
   }
   
   const handleChange = (event) => {
@@ -24,8 +28,8 @@ export const Navbar = () => {
     setSearchText(value)
   }
   
-  const resetSearch = (event) => {
-    dispatch(setSearch(""))
+  const resetSearch = () => {
+    // dispatch(setSearch(""))
     setSearchText("")
   }
 
@@ -47,6 +51,9 @@ export const Navbar = () => {
           <li className={styles.add}>
             <label tabIndex={"0"}></label>
             <AddGameForm />
+          </li>
+          <li className={styles.sorting}>
+            <label tabIndex={"0"}></label>
           </li>
         </ul>
       </nav>
