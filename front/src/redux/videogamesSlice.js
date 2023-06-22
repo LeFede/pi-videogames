@@ -4,8 +4,9 @@ const { VITE_API_ENDPOINT: endpoint } = import.meta.env
 const initialState = {
   videogames: [],
   genres: [],
-  // searched: [],
-  search: "",
+  currentPage: 0,
+  sorting: '',
+  filtering: 'none',
 }
 
 export const fetchVideogames = createAsyncThunk("videogames/fetch", async (thunkAPI) => {
@@ -14,13 +15,11 @@ export const fetchVideogames = createAsyncThunk("videogames/fetch", async (thunk
   return data
 })
 
-// export const searchVideogames = createAsyncThunk("videogames/search", async (query, thunkAPI) => {
-//   const res = await fetch(`http://localhost:3001/videogames/name?name=${query}`)
-//   const data = await res.json()
-//   console.log(data)
-//   return data
-// })
-
+export const fetchGenres = createAsyncThunk("genres/fetch", async (thunkAPI) => {
+  const res = await fetch(`${endpoint}/genres`)
+  const data = await res.json()
+  return data
+})
 
 
 export const videogamesSlice = createSlice({
@@ -36,22 +35,39 @@ export const videogamesSlice = createSlice({
       state.videogames.push(newVideogame)
     },
     addGenres: (state, action) => {
-      // const { payload: genres } = action
-      // state.genres.push(genres)
+      const { payload: genres } = action
+      state.genres.push(genres)
     },
+    setCurrentPage: (state, action) => {
+      const { payload: page } = action
+      state.currentPage = page
+    },
+    setSorting: (state, action) => {
+      const { payload: sorting } = action 
+      state.sorting = sorting
+    },
+    setFilter: (state, action) => {
+      const { payload: filter } = action
+      state.filter = filter
+    }
   }, 
   extraReducers: (builder) => {
     builder.addCase(fetchVideogames.fulfilled, (state, action) => {
       state.videogames = action.payload
     })
 
-    // builder.addCase(searchVideogames.fulfilled, (state, action) => {
-      // console.log(action.payload)
-      // state.searched = action.payload
-      // 
-    // })
+    builder.addCase(fetchGenres.fulfilled, (state, action) => {
+      state.genres = action.payload
+    })
+
   },
 })
 
-export const { addVideogames, addSingleVideogame, addGenres } = videogamesSlice.actions
+export const { 
+  addVideogames, 
+  addSingleVideogame, 
+  setCurrentPage,
+  setSorting,
+  setFilter,
+} = videogamesSlice.actions
 export default videogamesSlice.reducer

@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { addSingleVideogame } from "@redux"
+import { useDispatch, useSelector } from "react-redux"
 
-const { VITE_API_ENDPOINT: endpoint } = import.meta.env
+
+// const { VITE_API_ENDPOINT: endpoint } = import.meta.env
 const defaultForm = {
   name: "",
   plaftorms: [],
@@ -15,6 +17,8 @@ export const AddGameForm = () => {
 
   const [form, setForm] = useState(defaultForm)
 
+  const dispatch = useDispatch()
+  const { genres } = useSelector(state => state)
 
   const addVideogame = async () => {
     try {
@@ -25,14 +29,19 @@ export const AddGameForm = () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          nombre: "cualquier cosa",
+          image       : form.image,
+          name        : form.name,
+          // genres      : form.genres,
+          rating      : form.rating,
+          released    : form.released,
+          // platforms: form.platforms
         })
       })
 
       // const newVideogame = await res.json()
+      // dispatch(addSingleVideogame(newVideogame))
 
-      // console.log(newVideogame)
-      // dispatch(addSingleVideogame(newVideogame.message))
+      setForm(defaultForm)
     } catch (err) {
       console.log(err)
     }
@@ -122,14 +131,17 @@ export const AddGameForm = () => {
       <fieldset>
         <legend>Genres</legend>
 
-        <input type="checkbox" id="action" name="genres" value=""/>
-        <label htmlFor="action">Action</label>
-
-        <input type="checkbox" id="rpg" name="genres" value=""/>
-        <label htmlFor="rpg">rpg</label>
-
-        <input type="checkbox" id="adventure" name="genres" value=""/>
-        <label htmlFor="adventure">adventure</label>
+        {
+          genres.map(genre => {
+            let name = genre.name.toLowerCase()
+            return (
+              <>
+                <input type="checkbox" id={name} name="genres" value=""/>
+                <label htmlFor={name}>{name}</label>
+              </>
+            )
+          })
+        }
       </fieldset>
 
       <input type="submit" value="Create Videogame"/>

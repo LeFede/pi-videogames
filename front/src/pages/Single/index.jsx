@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import styles from "./Single.module.css"
 
-const { VITE_SINGLE_GAME_URL: url } = import.meta.env
+const { VITE_SINGLE_GAME_URL: url, VITE_API_ENDPOINT: endpoint } = import.meta.env
 const defaultGame = {
     genres    : [],
     id        : "",
@@ -23,9 +23,9 @@ export const Single = () => {
 
   useEffect(() => {
     const fetchVideogame = async () => {
-      const res = await fetch(url + params.id)
+      const res = await fetch(endpoint + url + params.id)
       const data = await res.json()
-
+  
       if (data.error) 
         setError(data.error)
       else 
@@ -51,12 +51,12 @@ export const Single = () => {
 
           { !error && <h3>Genres</h3> }
           <div className={styles.fieldset}>
-            { game.genres.length ? game.genres.map(genre => <p>{genre.name}</p>) : "" }
+            { game.genres.length ? game.genres.map(genre => <p key={genre.name}>{genre.name}</p>) : "" }
           </div>
 
           { !error && <h3>Platforms</h3> }
           <div className={styles.fieldset}>
-            { game.platforms.length ? game.platforms.map(({ platform }) => <p>{platform.name}</p>) : "" }
+            { game.platforms.length ? game.platforms.map(({ platform }) => <p key={platform.name}>{platform.name}</p>) : "" }
           </div>
 
           { game.image && <img className={styles.bg} src={game.image}/> }

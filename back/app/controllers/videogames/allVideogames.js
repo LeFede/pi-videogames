@@ -20,7 +20,6 @@ export const allVideogames = async (_, res) => {
       ]
     }, [])
 
-
     res.status(200).json(games.map(adaptVideogame))
 
   } catch (error) {

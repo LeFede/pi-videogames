@@ -1,25 +1,24 @@
-import { useDispatch, useSelector } from "react-redux"
 import styles from "./Navbar.module.css"
 import { useNavigate } from "react-router-dom"
-// import { searchVideogames } from "@redux"
+import { useState, useEffect } from "react"
 
-import { AddGameForm } from "@components/AddGameForm"
-import { useState } from "react"
+import { AddGameForm, SortingForm, FilterForm } from "@components"
+import { useSelector } from "react-redux"
+
 
 const defaultSearch = ""
 
 export const Navbar = () => {
 
   const navigate = useNavigate()
-  const { search } = useSelector(state => state)
-  const dispatch = useDispatch()
+
+  const { genres } = useSelector(state => state)
 
   const [searchText, setSearchText] = useState(defaultSearch)
 
   const handleSearch = (event) => {
     event.preventDefault()
-    // dispatch(setSearch(searchText))
-    // dispatch(searchVideogames(searchText))
+    if (!searchText) return
     navigate(`/videogames/name?name=${searchText}`)
   }
   
@@ -28,10 +27,16 @@ export const Navbar = () => {
     setSearchText(value)
   }
   
-  const resetSearch = () => {
-    // dispatch(setSearch(""))
+  const resetSearch = (e) => {
+    e.preventDefault()
     setSearchText("")
+    // dispatch(setSearch(""))
+    navigate('/videogames')
   }
+
+  useEffect(() => {
+    if (searchText === '') navigate('/videogames')
+  }, [searchText])
 
   return (
     <>
@@ -54,6 +59,11 @@ export const Navbar = () => {
           </li>
           <li className={styles.sorting}>
             <label tabIndex={"0"}></label>
+            <SortingForm />
+          </li>
+          <li className={styles.filter}>
+            <label tabIndex={"0"}></label>
+            <FilterForm />
           </li>
         </ul>
       </nav>

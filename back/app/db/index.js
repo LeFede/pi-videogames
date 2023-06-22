@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize"
-import { Genre, Videogame } from "#models"
+import * as models from "#models"
 import { env } from "#utils"
 
 export const sequelize = new Sequelize(
@@ -10,15 +10,11 @@ export const sequelize = new Sequelize(
   }
 )
 
-Genre(sequelize)
-Videogame(sequelize)
+Object.values(models.default).forEach((model) => model(sequelize)) 
 
-const { genre: seqGenre, videogame: seqVideogame } = sequelize.models
+export const { Genre, Videogame } = sequelize.models
 
-seqVideogame.belongsToMany(seqGenre, { through: "videogame_genre", timestamps: false })
-seqGenre.belongsToMany(seqVideogame, { through: "videogame_genre", timestamps: false })
+Videogame.belongsToMany(Genre, { through: "videogame_genre", timestamps: false })
+Genre.belongsToMany(Videogame, { through: "videogame_genre", timestamps: false })
 
 export default sequelize
-export const models = {
-  ...sequelize.models
-}

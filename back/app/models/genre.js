@@ -3,8 +3,14 @@ import { DataTypes } from "sequelize"
 
 export const Genre = (sequelize) => {
 
-  sequelize.define("genre", {
-
+  sequelize.define("Genre", {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: false
   })
 
   // sequelize.define('genre', {

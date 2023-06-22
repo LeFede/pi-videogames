@@ -1,5 +1,6 @@
 import { Router } from "express"
 import videogames from "./videogames/index.js"
+import genres from "./genres/index.js"
 
 // const videogames = require("./videogames.js")
 // const genres = require("./genres.js")
@@ -8,10 +9,10 @@ import videogames from "./videogames/index.js"
 const router = Router();
 
 router.use("/videogames", videogames)
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-// router.use('/videogames', videogames)
-// router.use('/genres', genres)
-// router.get('*', notFound)
+router.use("/genres", genres)
+
+router.use("*", (req, res) => {
+  res.status(404).json({ message: "NOT FOUND"})
+})
 
 export default router

@@ -1,21 +1,24 @@
 export const adaptVideogame = (game, crop = true) => {
+  try {
+    const divideUrl = "https://media.rawg.io/media/"
+    const fullUrl = game.background_image
+    const divideIndex= fullUrl.lastIndexOf(divideUrl)
 
-  const divideUrl = "https://media.rawg.io/media/"
-  const fullUrl = game.background_image
-  const divideIndex= fullUrl.lastIndexOf(divideUrl)
+    const start = fullUrl.slice(0, divideIndex+ divideUrl.length)
+    const end = fullUrl.slice(divideIndex+ divideUrl.length)
 
-  const start = fullUrl.slice(0, divideIndex+ divideUrl.length)
-  const end = fullUrl.slice(divideIndex+ divideUrl.length)
+    const final = start + ( crop ? "crop/600/400/" : "") + end
 
-  const final = start + ( crop ? "crop/600/400/" : "") + end
-
-  return {
-    genres    : game.genres,
-    id        : game.id,
-    image     : final,
-    name      : game.name,
-    platforms : game.platforms,
-    rating    : game.rating,
-    released  : game.released,
+    return {
+      genres    : game.genres,
+      id        : game.id,
+      image     : final,
+      name      : game.name,
+      platforms : game.platforms,
+      rating    : game.rating,
+      released  : game.released,
+    }
+  } catch (err) {
+    return 
   }
 }
