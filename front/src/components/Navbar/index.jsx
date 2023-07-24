@@ -67,13 +67,15 @@ export const Navbar = () => {
           </li>
         </ul>
       </nav>
-      <div className={styles.mode}>
-        <input type="checkbox" value="mode" id="mode" readOnly/>
-        <label tabIndex={"0"} htmlFor="mode"></label>
-        <div className={styles.bg}></div>
-      </div>
 
     </>
   )
 }
+
+
+      // <div className={styles.mode}>
+      //   <input type="checkbox" value="mode" id="mode" readOnly/>
+      //   <label tabIndex={"0"} htmlFor="mode"></label>
+      //   <div className={styles.bg}></div>
+      // </div>
 

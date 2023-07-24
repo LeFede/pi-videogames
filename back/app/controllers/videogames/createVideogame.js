@@ -4,6 +4,7 @@ export const createVideogame = async (req, res) => {
   // const { name } = req.body
   try {
     
+console.log('asd')
     const newVideogame = await Videogame.create({
       ...req.body
     })

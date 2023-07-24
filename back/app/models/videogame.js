@@ -1,4 +1,5 @@
 import { DataTypes } from "sequelize"
+import { Genre } from "#db"
 
 export const Videogame = (sequelize) => {
 
@@ -36,15 +37,15 @@ export const Videogame = (sequelize) => {
     },
 
 
-    // genres: {
-    //   type: DataTypes.ARRAY(models.genre),
-    //   allowNull: false
-    // },
+    genres: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
+    },
 
-    // platforms: {
-    //   type: DataTypes.ARRAY(DataTypes.STRING),
-    //   allowNull: false
-    // },
+    platforms: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
+    },
 
   }, 
   {

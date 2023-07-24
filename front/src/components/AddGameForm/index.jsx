@@ -2,7 +2,6 @@ import { useState } from "react"
 import { addSingleVideogame } from "@redux"
 import { useDispatch, useSelector } from "react-redux"
 
-
 // const { VITE_API_ENDPOINT: endpoint } = import.meta.env
 const defaultForm = {
   name: "",
@@ -16,6 +15,9 @@ const defaultForm = {
 export const AddGameForm = () => {
 
   const [form, setForm] = useState(defaultForm)
+
+  const [platforms, setPlatforms] = useState() 
+
 
   const dispatch = useDispatch()
   const { genres } = useSelector(state => state)
@@ -31,10 +33,10 @@ export const AddGameForm = () => {
         body: JSON.stringify({
           image       : form.image,
           name        : form.name,
-          // genres      : form.genres,
+          genres      : form.genres,
           rating      : form.rating,
           released    : form.released,
-          // platforms: form.platforms
+          platforms: form.platforms
         })
       })
 
@@ -64,7 +66,22 @@ export const AddGameForm = () => {
   }
   
   const handlePlatforms = (event) => {
-    console.log(event.target)
+    const { value } = event.target
+
+    if (platforms.includes(value)) {
+      return setPlatforms(prev => prev.filter(e => e !== value))
+    }
+
+    setPlatforms(prev => {
+      return [
+        ...prev,
+        value
+      ]
+    })
+
+  }
+
+  const isChecked = () => {
 
   }
 
@@ -92,7 +109,9 @@ export const AddGameForm = () => {
           type="checkbox" 
           id="pc" 
           name="platforms" 
-          value="Pc"/>
+          value="Pc"
+          checked={platforms.includes('Pc')}
+        />
         <label htmlFor="pc">Pc</label>
 
         <input 
@@ -100,7 +119,8 @@ export const AddGameForm = () => {
           type="checkbox" 
           id="ps4" 
           name="platforms" 
-          value="Ps4"/>
+          value="Ps4"
+        />
         <label htmlFor="ps4">Playstation 4</label>
 
         <input 
